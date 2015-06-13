@@ -1,5 +1,20 @@
 package org.adoptopenjdk.lambda.tutorial;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.MusicLibrary;
+import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Rating;
+import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Song;
+
 /*
  * #%L
  * lambda-tutorial
@@ -8,15 +23,15 @@ package org.adoptopenjdk.lambda.tutorial;
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
- * published by the Free Software Foundation, either version 2 of the 
+ * published by the Free Software Foundation, either version 2 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public 
+ *
+ * You should have received a copy of the GNU General Public
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-2.0.html>.
  * #L%
@@ -26,27 +41,12 @@ package org.adoptopenjdk.lambda.tutorial;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.StarRating;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.UserRatedMusicLibrary;
 import org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin.CloudScrobblingMusicLibrary;
-import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.MusicLibrary;
-import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Rating;
-import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Song;
 import org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin.LocalFilesystemMusicLibrary;
 import org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin.UserRatedLocalFilesystemMusicLibrary;
 import org.adoptopenjdk.lambda.tutorial.util.FeatureMatchers;
 import org.adoptopenjdk.lambda.tutorial.util.HasConcreteMethod;
 import org.hamcrest.Matcher;
 import org.junit.Test;
-
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 
 /**
  * Exercise 5 - Default Methods
@@ -207,8 +207,8 @@ public class Exercise_5_Test {
 
 //        UNCOMMENT THE LINES BELOW
 //        Until the sortedByArtist method is added to MusicLibrary, there will be a compiler error.
-//        assertThat(library.sortedByArtist(), containsSongsBy("Bob Dylan", "Creedence Clearwater Revival",
-//                                                             "Paulo Nutini", "Sam Cooke", "The Beatles"));
+        assertThat(library.sortedByArtist(), containsSongsBy("Bob Dylan", "Creedence Clearwater Revival",
+                                                             "Paulo Nutini", "Sam Cooke", "The Beatles"));
         assertThat(MusicLibrary.class, HasConcreteMethod.called("sortedByArtist"));
         assertThat(LocalFilesystemMusicLibrary.class, not(HasConcreteMethod.called("sortedByArtist")));
     }

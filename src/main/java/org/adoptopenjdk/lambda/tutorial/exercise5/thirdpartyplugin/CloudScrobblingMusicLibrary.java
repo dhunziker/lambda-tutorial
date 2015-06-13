@@ -1,5 +1,8 @@
 package org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 /*
  * #%L
  * lambda-tutorial
@@ -8,15 +11,15 @@ package org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin;
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
- * published by the Free Software Foundation, either version 2 of the 
+ * published by the Free Software Foundation, either version 2 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public 
+ *
+ * You should have received a copy of the GNU General Public
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-2.0.html>.
  * #L%
@@ -25,11 +28,6 @@ package org.adoptopenjdk.lambda.tutorial.exercise5.thirdpartyplugin;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.MusicLibrary;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Rating;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Song;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
 
 public class CloudScrobblingMusicLibrary implements MusicLibrary {
     private final CloudScrobblingService cloudScrobblingService;
@@ -82,4 +80,9 @@ public class CloudScrobblingMusicLibrary implements MusicLibrary {
                     new Song("Eleanor Rigby", "The Beatles"));
         }
     }
+
+	@Override
+	public Rating ratingOf(Song song) {
+		return new Rating(cloudScrobblingService.retrieveScrobbledRatingOf(song));
+	}
 }
