@@ -1,4 +1,4 @@
-## Lambda Tutorial
+## Lambda Tutorial [![Build Status](https://travis-ci.org/AdoptOpenJDK/lambda-tutorial.png?branch=master)](https://travis-ci.org/AdoptOpenJDK/lambda-tutorial)
 
 A set of exercises to teach use of Java 8 lambda syntax, and the new Streams API.
 
@@ -24,7 +24,7 @@ To follow the exercises:
 
 
 ### Getting Lambda JDK
-Early access builds of JDK 8 are available [here](https://jdk8.java.net/lambda/). 
+Early access builds of JDK 8 are available [here](https://jdk8.java.net/download.html). 
  
 
 #### Lamba JDK Build Compatibility
